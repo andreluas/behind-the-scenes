@@ -1,11 +1,11 @@
-import { useState, memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 
+import { log } from "../../log.js";
 import IconButton from "../UI/IconButton.jsx";
 import MinusIcon from "../UI/Icons/MinusIcon.jsx";
 import PlusIcon from "../UI/Icons/PlusIcon.jsx";
-import CounterOutput from "./CounterOutput.jsx";
-import { log } from "../../log.js";
 import CounterHistory from "./CounterHistory.jsx";
+import CounterOutput from "./CounterOutput.jsx";
 
 function isPrime(number) {
   log("Calculating if is prime number", 2, "other");
@@ -32,6 +32,10 @@ const Counter = memo(function Counter({ initialCount }) {
     () => isPrime(initialCount),
     [initialCount]
   );
+
+  // useEffect(() => {
+  //   setCounterChanges([{ value: initialCount, id: Math.random() * 1000 }]);
+  // });
 
   // const [counter, setCounter] = useState(initialCount);
   const [counterChanges, setCounterChanges] = useState([

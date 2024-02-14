@@ -12,6 +12,8 @@ function App() {
 
   function handleSetCount(newCount) {
     setChosenCount(newCount);
+    // console.log(newCount + 1) won't work!
+    // console.log((prevChosenCount) => prevChosenCount + 1) this work!
   }
 
   return (
@@ -19,10 +21,12 @@ function App() {
       <Header />
       <main>
         <ConfigureCounter onSet={handleSetCount} />
-        <Counter initialCount={chosenCount} />
+        <Counter key={chosenCount} initialCount={chosenCount} />
       </main>
     </>
   );
 }
 
 export default App;
+
+// millionjs: The tools to make React faster, automatically.
